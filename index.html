@@ -2284,6 +2284,8 @@ body.dark-mode {
             const submitBtn = formElement.querySelector(".submit-btn");
             const contactFormContainer = document.querySelector(".contact-form"); // Get container
 
+             console.log("Form element submitted:", formElement); 
+
             // Basic validation
             // ... (keep your validation code here) ...
             const nameInput = formElement.querySelector("#name");
@@ -2308,12 +2310,17 @@ body.dark-mode {
             const formData = new FormData(formElement);
             const formName = formElement.getAttribute('name'); // Get the form name
 
+            console.log("Form name retrieved:", formName); 
+
             // Prepare data for Netlify AJAX submission
             // Netlify needs the 'form-name' field and URL-encoded data
             const encodedData = encode({
                 "form-name": formName, // Crucial: tells Netlify which form this is
+                "DEBUG_FORM_NAME": formName, // Send it again for debugging
                 ...Object.fromEntries(formData) // Spread form data into the object
             });
+
+            console.log("Encoded data being sent:", encodedData);
 
             // Send data using Fetch API
             // Post to the current page path (or "/") when using Netlify AJAX
