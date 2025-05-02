@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aung Phone Pyae Kaung - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Color Variables */
+        :root {
+            --primary-color: #2d4059;
+            --secondary-color: #ea5455;
+            --accent-color: #f07b3f;
+            --light-color: #ffd460;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --white-color: #ffffff;
+        }
+
+        /* --- Dark Mode Styles --- */
+body.dark-mode {
+    /* Redefine variables for dark mode */
+    --primary-color: #5c8dff; /* Lighter blue for links/accents on dark */
+    --secondary-color: #ff7b7b; /* Slightly brighter red */
+    --accent-color: #ff9a6f; /* Slightly brighter orange */
+    --light-color: #ffe082; /* Slightly adjusted yellow */
+    --text-color: #e0e0e0; /* Light gray for text */
+    --bg-color: #121212; /* Very dark background */
+    --white-color: #1e1e1e; /* Dark background for cards/header */
+
+    /* Specific overrides for elements not perfectly covered by variables */
+    --header-bg-color: rgba(30, 30, 30, 0.95); /* Dark semi-transparent sticky header */
+    --shadow-color: rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
+    --input-bg-color: rgba(255, 255, 255, 0.1); /* Contact form input background */
+    --input-text-color: #e0e0e0; /* Contact form input text */
+    --skill-bar-bg: #444; /* Darker background for skill bar */
+    --timeline-line-color: #555; /* Darker timeline line */
+    --contact-bg: #1e1e1e; /* Explicit dark background for contact section */
+    --contact-text: #e0e0e0; /* Explicit text color for contact section */
+    --contact-icon-color: #ffe082; /* Match light color */
+    --contact-link-color: #f5f5f5; /* Contact links */
+    --contact-link-hover: #ffe082; /* Contact link hover */
+    --footer-bg: #1a1a1a; /* Darker footer */
+}
+
+        /* Apply general dark mode overrides */
+        body.dark-mode {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.dark-mode .section-title {
+            color: var(--primary-color); /* Use the lighter blue */
+        }
+
+        body.dark-mode .section-title::after {
+            background-color: var(--secondary-color);
+        }
+
+        body.dark-mode header {
+            background-color: var(--white-color); /* Use the dark card color */
+            box-shadow: 0 2px 15px var(--shadow-color);
+        }
+        body.dark-mode header.sticky {
+            background-color: var(--header-bg-color); /* Use specific dark sticky header */
+        }
+
+        body.dark-mode nav .logo,
+        body.dark-mode .nav-links a {
+            color: var(--text-color); /* Light text for nav */
+        }
+        body.dark-mode .nav-links a:hover,
+        body.dark-mode .nav-links a.active-nav {
+            color: var(--secondary-color); /* Use accent for hover/active */
+        }
+        body.dark-mode .nav-links a::after {
+            background-color: var(--secondary-color);
+        }
+        body.dark-mode .hamburger .bar {
+            background-color: var(--text-color); /* Light bars for hamburger */
+        }
+        body.dark-mode .nav-links { /* Mobile nav background */
+            background-color: var(--white-color);
+            box-shadow: 0 10px 15px var(--shadow-color);
+        }
+
+        body.dark-mode .hero {
+            background-color: #1f2a38; /* Dark blueish hero background */
+            /* The ::before overlay might need adjustment if the image becomes too dark */
+        }
+        body.dark-mode .hero-content {
+            color: var(--text-color); /* Ensure hero text is light */
+        }
+        body.dark-mode .hero-subtitle {
+            color: var(--light-color); /* Keep yellow subtitle */
+        }
+        body.dark-mode .primary-btn {
+            background-color: var(--secondary-color);
+            color: #111; /* Dark text on bright button */
+            border-color: var(--secondary-color);
+        }
+        body.dark-mode .primary-btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color); /* Bright text on transparent */
+        }
+        body.dark-mode .secondary-btn {
+            color: var(--text-color);
+            border-color: var(--text-color);
+        }
+        body.dark-mode .secondary-btn:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color); /* Dark text on light bg */
+        }
+        body.dark-mode .social-icons a {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+        body.dark-mode .social-icons a:hover {
+            background-color: var(--secondary-color);
+            color: #111;
+        }
+        body.dark-mode .scroll-down,
+        body.dark-mode .mouse-wrapper,
+        body.dark-mode .mouse-icon,
+        body.dark-mode .mouse-wheel {
+            color: var(--text-color);
+            /* Adjust background/border colors if needed */
+        }
+        body.dark-mode .mouse-icon,
+        body.dark-mode .mouse-wheel {
+        border-color: var(--text-color);
+        background-color: var(--text-color); /* Wheel */
+        }
+        body.dark-mode .mouse-wrapper {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px var(--shadow-color);
+        }
+
+        body.dark-mode .about,
+        body.dark-mode .experience .exp-card, /* If you bring back cards */
+        body.dark-mode .projects .project-card, /* If you bring back projects */
+        body.dark-mode .skills,
+        body.dark-mode .certifications .cert-card,
+        body.dark-mode .education .timeline-content,
+        body.dark-mode .languages .language-item,
+        body.dark-mode .experience .exp-content /* Layered experience */
+        {
+            background-color: var(--white-color); /* Use dark card color */
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        body.dark-mode .experience { /* Background for section */
+            background-color: var(--bg-color);
+        }
+
+        body.dark-mode .about-text h3,
+        body.dark-mode .exp-card h3, /* Cards */
+        body.dark-mode .project-content h3, /* Cards */
+        body.dark-mode .skill-category h3,
+        body.dark-mode .cert-card h3,
+        body.dark-mode .timeline-content h3,
+        body.dark-mode .language-item h4,
+        body.dark-mode .exp-text h3 /* Layered */
+        {
+            color: var(--primary-color); /* Lighter blue for headings */
+        }
+
+        body.dark-mode .exp-card h4, /* Cards */
+        body.dark-mode .timeline-content h4,
+        body.dark-mode .cert-card p, /* Issuer text */
+        body.dark-mode .language-level,
+        body.dark-mode .exp-text h4 /* Layered */
+        {
+            color: var(--secondary-color); /* Brighter red accent */
+        }
+
+        body.dark-mode .exp-text .exp-meta {
+            color: #aaa; /* Lighter meta text */
+        }
+
+        body.dark-mode .timeline::after {
+            background-color: var(--timeline-line-color);
+        }
+        body.dark-mode .timeline-item::after {
+            background-color: var(--white-color); /* Dark circle background */
+            border-color: var(--secondary-color);
+        }
+
+        body.dark-mode .project-tags span {
+            background-color: var(--primary-color);
+            color: var(--bg-color); /* Dark text on light blue tag */
+        }
+
+        body.dark-mode .skill-bar {
+            background-color: var(--skill-bar-bg);
+        }
+        body.dark-mode .skill-progress {
+            background-color: var(--secondary-color);
+        }
+        body.dark-mode .skill-progress::after {
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 10px var(--shadow-color);
+        }
+
+        body.dark-mode .languages h3 {
+            color: var(--primary-color);
+        }
+        body.dark-mode .languages h3::after {
+            background-color: var(--secondary-color);
+        }
+
+        body.dark-mode .cert-card i {
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section Dark Mode */
+        body.dark-mode .contact {
+            background-color: var(--contact-bg);
+            color: var(--contact-text);
+        }
+        body.dark-mode .contact .section-title {
+            color: var(--contact-text);
+        }
+        body.dark-mode .contact .section-title::after {
+            background-color: var(--contact-icon-color);
+        }
+        body.dark-mode .contact-item i {
+            color: var(--contact-icon-color);
+        }
+        body.dark-mode .contact-item a {
+            color: var(--contact-link-color);
+        }
+        body.dark-mode .contact-item a:hover {
+            color: var(--contact-link-hover);
+        }
+        body.dark-mode .contact-form {
+            background-color: rgba(0, 0, 0, 0.2); /* Slightly darker form bg */
+        }
+        body.dark-mode .form-group label {
+            color: var(--contact-text);
+        }
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background-color: var(--input-bg-color);
+            color: var(--input-text-color);
+            border: 1px solid #444; /* Add subtle border */
+        }
+        body.dark-mode .submit-btn {
+            background-color: var(--light-color);
+            color: #111; /* Dark text */
+        }
+        body.dark-mode .submit-btn:hover {
+            background-color: var(--secondary-color);
+            color: #111;
+        }
+
+        /* Footer Dark Mode */
+        body.dark-mode footer {
+            background-color: var(--footer-bg);
+            color: #aaa; /* Lighter footer text */
+        }
+        body.dark-mode .footer-social a {
+            color: #bbb;
+        }
+        body.dark-mode .footer-social a:hover {
+            color: var(--light-color);
+        }
+
+        /* Scroll Top Button Dark Mode */
+        body.dark-mode .scroll-top {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+        body.dark-mode .scroll-top:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Slider Buttons Dark Mode */
+        body.dark-mode .slider-btn {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: var(--text-color);
+        }
+        body.dark-mode .slider-btn:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: var(--secondary-color);
+        }
+        body.dark-mode .slider-dot {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        body.dark-mode .slider-dot.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* General Link Style Dark Mode */
+        body.dark-mode a {
+            color: var(--primary-color);
+        }
+        body.dark-mode a:hover {
+            color: var(--secondary-color);
+        }
+        body.dark-mode .btn { /* Default button adjustments */
+            background-color: var(--primary-color);
+            color: var(--bg-color); /* Dark text on light blue button */
+        }
+        body.dark-mode .btn:hover {
+            background-color: var(--secondary-color);
+            color: #111; /* Dark text on red hover */
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white-color);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.sticky {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            font-weight: bold;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active-nav {
+            color: var(--accent-color);
+        }
+
+        .nav-links a.active-nav::after {
+            width: 100%;
+        }
+        .nav-links a[href="#contact"]:hover::after {
+            width: 100% !important;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease;
+            background-color: var(--text-color);
+        }
+
+        /* New Hero Section - Updated to match reference site */
+        /* Add these styles to enhance your hero section */
+        .hero {
+            position: relative;
+            padding-top: 50px;
+        }
+
+        .hero::before {
+            background: linear-gradient(rgba(45, 64, 89, 0.8), rgba(45, 64, 89, 0.9)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            opacity: 1;
+        }
+
+        .hero-img-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border: 5px solid var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1200/800') center/cover no-repeat;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: var(--white-color);
+        }
+
+        .hero-img-container {
+            width: 270px;
+            height: 270px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--light-color);
+            font-weight: 700;
+        }
+
+        .hero-description {
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .primary-btn {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .primary-btn:hover {
+            background-color: transparent;
+            color: var(--white-color);
+        }
+
+        .secondary-btn {
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--white-color);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white-color);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white-color);
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: fit-content;
+            color: var(--white-color);
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .mouse-wrapper {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .mouse-icon {
+            width: 25px;
+            height: 40px;
+            border: 2px solid var(--white-color);
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mouse-wheel {
+            width: 4px;
+            height: 8px;
+            background-color: var(--white-color);
+            border-radius: 2px;
+            position: absolute;
+            top: 8px;
+            animation: mouse-bounce 1.5s infinite;
+        }
+
+        @keyframes mouse-bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(10px);
+            }
+            60% {
+                transform: translateY(5px);
+            }
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            text-align: center;
+            max-width: 45%;
+        }
+
+        .about-img img {
+            width: 80%;
+            height: 500px;
+            object-fit: cover;
+            object-position: center top;
+            /* border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            min-height: 4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Education Section */
+        .education .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 50px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white-color);
+            border: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            top: 20px;
+            right: -14px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -14px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white-color);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .timeline-content p {
+            margin-bottom: 10px;
+        }
+
+        /* Extracurricular Section */
+        .experience .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .exp-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .exp-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .exp-card h4 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .exp-card p {
+            margin-bottom: 15px;
+        }
+
+        .exp-card ul {
+            list-style-position: inside;
+            margin-bottom: 15px;
+        }
+
+        .exp-card li {
+            margin-bottom: 5px;
+        }
+
+        /* Extracurricular Section - New Layered Design */
+        .experience {
+            background-color: var(--bg-color);
+            padding: 100px 0;
+        }
+
+        .exp-item {
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background-color: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .exp-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .exp-slider-container {
+            flex: 1;
+            max-width: 50%;
+            position: relative;
+        }
+
+        .exp-slider {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .exp-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .exp-slide.active {
+            opacity: 1;
+        }
+
+        .exp-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .exp-text {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .exp-text h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .exp-text h4 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .exp-meta {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .exp-text ul {
+            list-style-type: circle;
+            padding-left: 20px;
+        }
+
+        .exp-text li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Slider controls */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--primary-color);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: var(--secondary-color);
+        }
+
+        .prev-btn {
+            left: 15px;
+        }
+
+        .next-btn {
+            right: 15px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Responsive styles for the experience section */
+        @media (max-width: 992px) {
+            .exp-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .exp-content.reverse {
+                flex-direction: column;
+            }
+            
+            .exp-slider-container {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .exp-slider {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .exp-slider {
+                height: 250px;
+            }
+            
+            .exp-text h3 {
+                font-size: 1.6rem;
+            }
+            
+            .exp-text h4 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--bg-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .project-content p {
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .project-tags span {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--white-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-progress {
+            position: relative;
+            overflow: visible;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            transform: translateX(50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        /* Languages */
+        .languages {
+            margin-top: 40px;
+        }
+
+        .languages h3 {
+            font-size: 1.7rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        .languages h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .language-item {
+            padding: 15px;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-item h4 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .language-level {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Certifications Section */
+        .certifications .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .cert-card i {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .cert-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .cert-card p {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .contact .section-title {
+            color: var(--white-color);
+        }
+
+        .contact .section-title::after {
+            background-color: var(--light-color);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: var(--light-color);
+        }
+        .contact-item a {
+            color: var(--white-color);
+            text-decoration: #ffd460;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--light-color);
+        }
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: var(--white-color);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-social {
+            margin: 15px 0;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--white-color);
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--light-color);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 17px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 17px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--white-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-img-container {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-img-container {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+            align-items: flex-start; /* Aligns items to the top */
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 30px; /* Add padding to match the form's padding */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+        }
+
+        .animate-on-scroll.animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        /* --- Dark Mode Toggle Button Styles --- */
+        .dark-mode-toggle {
+            cursor: pointer;
+            font-size: 1.5rem; /* Adjust size as needed */
+            margin-left: 20px; /* Space from nav links or hamburger */
+            color: var(--primary-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: flex; /* Helps center icon if needed */
+            align-items: center;
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--secondary-color);
+            transform: rotate(15deg);
+        }
+
+        /* Adjust color in dark mode */
+        body.dark-mode .dark-mode-toggle {
+            color: var(--light-color); /* Use yellow in dark mode */
+        }
+
+        body.dark-mode .dark-mode-toggle:hover {
+            color: var(--secondary-color); /* Keep red hover or change if desired */
+        }
+
+        /* Position adjustment for mobile when nav links are active */
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                margin-left: 0; /* Remove left margin */
+                margin-right: 15px; /* Add right margin to space from hamburger */
+                order: -1; /* Move toggle before hamburger visually if needed */
+            }
+            nav {
+                justify-content: space-between; /* Ensure space between logo and icons */
+                /* display: flex; is already set */
+                align-items: center; /* Ensure vertical alignment */
+            }
+            .logo {
+            margin-right: 0; /* Remove default margin-right */
+            }
+        }
+        /* --- Fix Nav Link Background Box in Dark Mode --- */
+        @media (min-width: 769px) { /* Target screens wider than the mobile breakpoint (768px) */
+            body.dark-mode .nav-links {
+                background-color: transparent; /* Explicitly set desktop nav background to transparent */
+                box-shadow: none; /* Also remove any unintended shadow */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Aung Phone Pyae Kaung</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Extracurricular</a></li>
+                    <!-- <li><a href="#projects">Projects</a></li> -->
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i> <!-- Moon icon initially -->
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Updated to match reference site -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-img-container">
+                <img src="images/Professional Me.jpg" alt="Aung Phone Pyae Kaung" class="hero-img">
+            </div>
+            <h1>Aung Phone Pyae Kaung</h1>
+            <div class="hero-subtitle">Business Analytics Student</div>
+            <p class="hero-description">
+                <strong>A passionate data enthusiast with a global perspective, focused on delivering impactful results and creating opportunities.</strong>
+            </p>
+            <div class="hero-btns">
+                <a href="#contact" class="primary-btn">Contact Me</a>
+                <a href="#about" class="secondary-btn">Learn More</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/aung-phone-pyae-kaung" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:eddie.aungphone@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/share/1EAezRc9r6/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/eddie_is_rh?igsh=MWQ0OWNxYTRrZzQ4ag==" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down">
+            <div class="mouse-wrapper">
+                <div class="mouse-icon">
+                    <div class="mouse-wheel"></div>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content animate-on-scroll">
+                <div class="about-img">
+                    <img src="images/Professional_Me_Removebg.png" alt="Aung Phone Pyae Kaung">
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I'm Aung Phone</h3>
+                    <p>As a Business Analytics student with practical experience in event leadership and operational analysis within hospitals and pharmaceuticals, I consistently take initiative to create opportunities rather than waiting for them.</p>
+                    <p>With strong analytical skills and a global perspective, I focus on delivering impactful results that extend beyond traditional expectations.</p>
+                    <p>I am passionate about using data to drive business decisions and am constantly looking to expand my knowledge and skills in the field of analytics.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>Sunway University</h3>
+                        <h4>Bachelor of Business Analytics (Honours)</h4>
+                        <p>Subang Jaya, Malaysia</p>
+                        <p>2024 - Present</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>IHM International College</h3>
+                        <h4>Double Diploma - Senior High School Diploma + Foundation Diploma in Arts and Science</h4>
+                        <p>Yangon, Myanmar</p>
+                        <p>2023 - 2024</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>Guarantee International College</h3>
+                        <h4>International General Certificate of Secondary Education (IGCSE) O-Level</h4>
+                        <p>Yangon, Myanmar</p>
+                        <p>2022 - 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Extracurricular Section -->
+<section id="experience" class="experience">
+    <div class="container">
+        <h2 class="section-title">Extracurricular</h2>
+        
+        <!-- Experience Item 1 -->
+        <div class="exp-item animate-on-scroll">
+            <div class="exp-content">
+                <div class="exp-slider-container">
+                    <div class="exp-slider">
+                        <div class="exp-slide active">
+                            <img src="images/School Activities 1.jpg" alt="IHM Activities 1">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/School Activities 2.jpg" alt="IHM Activities 2">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/School Activities 3.jpg" alt="IHM Activities 3">
+                        </div>
+                        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        <div class="slider-dots"></div>
+                    </div>
+                </div>
+                <div class="exp-text">
+                    <h3>IHM International College</h3>
+                    <h4>School Activities</h4>
+                    <p class="exp-meta">Yangon, Myanmar | Dec 2023 - Jul 2024</p>
+                    <ul>
+                        <li>Engaged various sport activities such as badminton, football and swimming</li>
+                        <li>Actively participated in school events, including New Vision Art & Design Workshop and Christmas Party Event Planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Experience Item 2 -->
+        <div class="exp-item animate-on-scroll">
+            <div class="exp-content reverse">
+                <div class="exp-text">
+                    <h3>FAME Pharmaceuticals</h3>
+                    <h4>Industrial Experiential Visit</h4>
+                    <p class="exp-meta">Yangon, Myanmar | June 2024</p>
+                    <ul>
+                        <li>Observed production areas and gained knowledge of GMP and ISO standards - IS0 9001:2015 for Quality Management, ISO 14001:2015 for Environmental Management, ISO 45001:2018 for OH&S</li>
+                        <li>Acquired in-depth knowledge of pharmaceutical production process, including drug formulation and manufacturing protocols</li>
+                    </ul>
+                </div>
+                <div class="exp-slider-container">
+                    <div class="exp-slider">
+                        <div class="exp-slide active">
+                            <img src="images/FAME 1.jpg" alt="FAME Pharmaceuticals 1">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/FAME 2.jpg" alt="FAME Pharmaceuticals 2">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/FAME 3.jpg" alt="FAME Pharmaceuticals 3">
+                        </div>
+                        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        <div class="slider-dots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Experience Item 3 -->
+        <div class="exp-item animate-on-scroll">
+            <div class="exp-content">
+                <div class="exp-slider-container">
+                    <div class="exp-slider">
+                        <div class="exp-slide active">
+                            <img src="images/CMMT 1.jpg" alt="Chan Myae Myittar Hospital 1">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/CMMT 2.jpg" alt="Chan Myae Myittar Hospital 2">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/CMMT 3.jpg" alt="Chan Myae Myittar Hospital 3">
+                        </div>
+                        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        <div class="slider-dots"></div>
+                    </div>
+                </div>
+                <div class="exp-text">
+                    <h3>Chan Myae Myittar Hospital</h3>
+                    <h4>Hospital Insights Tour</h4>
+                    <p class="exp-meta">Thanlyin, Myanmar | April 2024</p>
+                    <ul>
+                        <li>Studied the hospital's sustainable business practice energy-efficient waste management and incineration system for disposal of communicative surgical instruments</li>
+                        <li>Engaged with nurses, doctors and managerial staffs to understand their roles and responsibilities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Experience Item 4 -->
+        <div class="exp-item animate-on-scroll">
+            <div class="exp-content reverse">
+                <div class="exp-text">
+                    <h3>Yangon Region Young Entrepreneurs Association (YRYEA) Event</h3>
+                    <h4>Volunteering</h4>
+                    <p class="exp-meta">Yangon, Myanmar | February 2024</p>
+                    <ul>
+                        <li>Responsible for complete setup and dismantling of booth, including of its decoration and outlook briefing</li>
+                        <li>Managed welfare responsibilities, supervised customer gift distribution, and organized counseling sessions for potential clients</li>
+                        <li>Facilitated communications with other schools during the event to establish partnerships through B2B marketing strategies</li>
+                    </ul>
+                </div>
+                <div class="exp-slider-container">
+                    <div class="exp-slider">
+                        <div class="exp-slide active">
+                            <img src="images/YRYEA 1.jpg" alt="YRYEA Event 1">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/YRYEA 2.jpg" alt="YRYEA Event 2">
+                        </div>
+                        <div class="exp-slide">
+                            <img src="images/YRYEA 4.jpg" alt="YRYEA Event 3">
+                        </div>
+                        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                        <div class="slider-dots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="/api/placeholder/400/300" alt="Data Analysis Project">
+                </div>
+                <div class="project-content">
+                    <h3>Sales Data Analysis</h3>
+                    <p>Analyzed sales data to identify trends and provide actionable insights for business decision-making.</p>
+                    <div class="project-tags">
+                        <span>SQL</span>
+                        <span>Power BI</span>
+                        <span>Data Visualization</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="/api/placeholder/400/300" alt="Market Research Project">
+                </div>
+                <div class="project-content">
+                    <h3>Market Basket Analysis</h3>
+                    <p>Implemented association rule mining to discover relationships between products frequently purchased together.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Machine Learning</span>
+                        <span>Data Mining</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-database"></i>
+                    <h3>Databases and SQL for Data Science with Python</h3>
+                    <p>IBM</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Foundations of Digital Marketing and E-Commerce</h3>
+                    <p>Google</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Foundations of Business Intelligence</h3>
+                    <p>Google</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category animate-on-scroll">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Data Analysis</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>SQL</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Business Intelligence</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="skill-category animate-on-scroll">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Leadership</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Communication</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="languages animate-on-scroll">
+                <h3>Languages</h3>
+                <div class="language-grid">
+                    <div class="language-item">
+                        <h4>Burmese</h4>
+                        <p class="language-level">Native</p>
+                    </div>
+                    <div class="language-item">
+                        <h4>English</h4>
+                        <p class="language-level">Proficient</p>
+                    </div>
+                    <div class="language-item">
+                        <h4>Bahasa Melayu</h4>
+                        <p class="language-level">Intermediate</p>
+                    </div>
+                    <div class="language-item">
+                        <h4>Russian</h4>
+                        <p class="language-level">Intermediate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-content">
+               <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>eddie.aungphone@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+601116634563</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Subang Jaya, Malaysia</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h3>LinkedIn</h3>
+                                <p><a href="https://www.linkedin.com/in/aung-phone-pyae-kaung" target="_blank">Aung Phone Pyae Kaung</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-facebook"></i>
+                            <div>
+                                <h3>Facebook</h3>
+                                <p><a href="https://www.facebook.com/share/1EAezRc9r6/" target="_blank">Aung Phone Pyae Kaung</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <h3>Instagram</h3>
+                                <p><a href="https://www.instagram.com/eddie_is_rh_00" target="_blank">@eddie_is_rh_00</a></p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="contact-form">
+                    <!-- *** MODIFIED FORM TAG for Netlify *** -->
+                    <form name="portfolio-contact" method="POST" netlify netlify-honeypot="bot-field"> 
+                        
+                        <!-- *** Honeypot field (hidden) *** -->
+                        <p class="hidden" style="display: none;"> 
+                            <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                        </p>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <!-- *** Added name="name" *** -->
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <!-- *** Added name="email" *** -->
+                            <input type="email" id="email" name="email" required> 
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <!-- *** Added name="subject" *** -->
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <!-- *** Added name="message" *** -->
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Aung Phone Pyae Kaung. All Rights Reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/aung-phone-pyae-kaung" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:eddie.aungphone@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/share/1EAezRc9r6/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/eddie_is_rh?igsh=MWQ0OWNxYTRrZzQ4ag==" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+    // --- Dark Mode Logic START ---
+
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const themeKey = 'themePreference'; // Key for localStorage
+
+    // Function to apply theme (dark or light)
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            // Ensure darkModeToggle exists before trying to change its HTML
+            if (darkModeToggle) {
+               darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Show sun icon
+            }
+            localStorage.setItem(themeKey, 'dark');
+        } else {
+            body.classList.remove('dark-mode');
+             // Ensure darkModeToggle exists before trying to change its HTML
+            if (darkModeToggle) {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Show moon icon
+            }
+            localStorage.setItem(themeKey, 'light');
+        }
+    }
+
+    // Function to toggle theme
+    function toggleTheme() {
+        if (body.classList.contains('dark-mode')) {
+            applyTheme('light');
+        } else {
+            applyTheme('dark');
+        }
+    }
+
+    // --- Apply saved theme on initial load ---
+    // THIS PART IS CRUCIAL TO RUN EARLY
+    const savedTheme = localStorage.getItem(themeKey);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else if (prefersDark) {
+        // Uncomment below if you want to default to OS preference
+        // applyTheme('dark');
+    } else {
+        applyTheme('light'); // Default to light if nothing else specified
+    }
+    // --- End of initial theme application ---
+
+
+    // --- Event listener for the toggle button ---
+    // Ensure the toggle button exists before adding listener
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // --- Dark Mode Logic END ---
+
+
+
+    // --- Your Existing JS START (with modifications for scroll animation) ---
+
+    // Toggle mobile menu
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (hamburger && navLinks) { // Check if elements exist
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            // Check if elements exist before removing class
+            if (hamburger && navLinks) {
+                 hamburger.classList.remove("active");
+                 navLinks.classList.remove("active");
+            }
+        });
+    });
+
+    // Sticky header
+    window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        // Check if header exists before toggling class
+        if (header) {
+            header.classList.toggle("sticky", window.scrollY > 0);
+        }
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.querySelector(".scroll-top");
+
+    if (scrollTopBtn) { // Check if button exists before adding listeners
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("active");
+            } else {
+                scrollTopBtn.classList.remove("active");
+            }
+        });
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+
+
+    // Smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            // Check if targetId is just '#' or empty, if so, scroll to top
+            if (targetId === '#' || !targetId || targetId.length <= 1) {
+                window.scrollTo({ top: 0, behavior: 'smooth'});
+                return; // Stop processing for this link
+            }
+
+            try {
+                 const target = document.querySelector(targetId);
+                 if (target) {
+                    const headerOffset = document.querySelector('header.sticky') ? 70 : 90; // Adjust offset based on sticky header
+                    window.scrollTo({
+                        top: target.offsetTop - headerOffset, // Adjust offset as needed
+                        behavior: 'smooth'
+                    });
+                 } else {
+                    console.warn(`Smooth scroll target not found for href: ${targetId}`);
+                 }
+            } catch (error) {
+                 console.error(`Invalid selector for smooth scroll: ${targetId}`, error);
+            }
+        });
+    });
+
+    // Contact Form Logic (including resetForm function and initial listener attachment)
+    function resetForm() {
+        const contactFormContainer = document.querySelector(".contact-form");
+        if (!contactFormContainer) return; // Exit if container not found
+
+        contactFormContainer.innerHTML = `
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn submit-btn">Send Message</button>
+            </form>
+        `;
+
+        // Re-attach event listener to the new form
+        const newForm = contactFormContainer.querySelector("form");
+        if (newForm) {
+             attachFormSubmitListener(newForm);
+        }
+    }
+
+    // Helper function to URL-encode form data for Netlify AJAX
+    function encode(data) {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    }
+
+    function attachFormSubmitListener(formElement) {
+        formElement.addEventListener("submit", function(e) {
+            e.preventDefault(); // <<<--- KEEP preventDefault for AJAX
+
+            const submitBtn = formElement.querySelector(".submit-btn");
+            const contactFormContainer = document.querySelector(".contact-form"); // Get container
+
+            // Basic validation
+            // ... (keep your validation code here) ...
+            const nameInput = formElement.querySelector("#name");
+            const emailInput = formElement.querySelector("#email");
+            const messageInput = formElement.querySelector("#message");
+            const name = nameInput ? nameInput.value : '';
+            const email = emailInput ? emailInput.value : '';
+            const message = messageInput ? messageInput.value : '';
+
+            if (!name || !email || !message) {
+                alert("Please fill all required fields");
+                return; // Stop if invalid
+            }
+
+            // Show sending state
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+            }
+
+            // Get form data
+            const formData = new FormData(formElement);
+            const formName = formElement.getAttribute('name'); // Get the form name
+
+            // Prepare data for Netlify AJAX submission
+            // Netlify needs the 'form-name' field and URL-encoded data
+            const encodedData = encode({
+                "form-name": formName, // Crucial: tells Netlify which form this is
+                ...Object.fromEntries(formData) // Spread form data into the object
+            });
+
+            // Send data using Fetch API
+            // Post to the current page path (or "/") when using Netlify AJAX
+            fetch("/", { // Or use formElement.getAttribute('action') if you set one (usually not needed for Netlify AJAX)
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encodedData
+            })
+            .then(() => {
+                // Success! Show your custom thank you message
+                if (contactFormContainer) {
+                    contactFormContainer.innerHTML = `<div style="text-align: center;">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--light-color); margin-bottom: 1rem;"></i>
+                        <h3>Thank you for your message!</h3>
+                        <p>I'll get back to you as soon as possible.</p>
+                        <button class="btn submit-btn" onclick="resetForm()" style="margin-top: 1rem;">Send Another Message</button>
+                    </div>`;
+                }
+            })
+            .catch((error) => {
+                 // Handle errors
+                 alert("Oops! There was a problem submitting your form. Please try again. Error: " + error);
+                 console.error('Form submission error:', error);
+                 // Re-enable the button if there was an error
+                 if (submitBtn) {
+                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.disabled = false;
+                 }
+            });
+        });
+    }
+
+    // Initial attachment for the form that loads with the page
+    const initialForm = document.querySelector(".contact-form form");
+    if (initialForm) {
+        attachFormSubmitListener(initialForm);
+    }
+
+
+    // Active Navigation Link Highlighting
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section[id]'); // Ensure sections have IDs
+        const navLinks = document.querySelectorAll('.nav-links a');
+        let current = '';
+        const headerHeight = document.querySelector('header')?.offsetHeight || 70; // Get header height or default
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // Adjust offset based on your fixed header height + a little buffer
+            const triggerPoint = sectionTop - headerHeight - 80; // e.g., 80px buffer below header
+
+            if (pageYOffset >= triggerPoint) {
+                current = section.getAttribute('id');
+            }
+        });
+
+         // Special case for the last section (contact) when scrolled near the bottom
+         if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 150 && document.querySelector('#contact')) {
+            current = 'contact';
+         } else if (window.pageYOffset < 300 && document.querySelector('#home')) { // Highlight Home at top
+             current = 'home';
+         }
+
+
+        // Update the active class
+        navLinks.forEach(link => {
+            link.classList.remove('active-nav');
+            // Ensure link has href and it's not just '#'
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#') && href.length > 1) {
+                 const hrefId = href.substring(1);
+                 if (hrefId === current) {
+                    link.classList.add('active-nav');
+                 }
+            }
+        });
+    }, { passive: true }); // Use passive listener for performance
+
+
+    // Enhanced typing effect for About section heading
+    // Wrap in DOMContentLoaded to ensure element exists
+    document.addEventListener('DOMContentLoaded', function() {
+        const aboutHeading = document.querySelector('.about-text h3');
+        if (!aboutHeading) {
+            console.warn('About heading not found for typing effect.');
+            return; // Exit if heading not found
+        }
+
+        const text = "Hello, I'm Aung Phone"; // Store original text
+        let charIndex = 0;
+        let isTypingActive = false; // Flag to control if effect should run
+        let typeInterval;
+        let eraseInterval;
+
+        function type() {
+            if (!isTypingActive) return; // Stop if deactivated
+            if (charIndex < text.length) {
+                aboutHeading.textContent += text.charAt(charIndex);
+                charIndex++;
+                typeInterval = setTimeout(type, 100); // Store interval ID
+            } else {
+                // Wait 2 seconds before starting to delete
+                eraseInterval = setTimeout(erase, 2000); // Store interval ID
+            }
+        }
+
+        function erase() {
+            if (!isTypingActive) return; // Stop if deactivated
+            if (charIndex > 0) {
+                aboutHeading.textContent = text.substring(0, charIndex - 1);
+                charIndex--;
+                eraseInterval = setTimeout(erase, 50); // Store interval ID
+            } else {
+                // Wait 1 second before typing again
+                typeInterval = setTimeout(type, 1000); // Store interval ID
+            }
+        }
+
+        function startTypingEffect() {
+             if (isTypingActive) return; // Don't start if already running
+             isTypingActive = true;
+             aboutHeading.textContent = ''; // Clear text initially
+             charIndex = 0;
+             // Clear any previous intervals just in case
+             clearTimeout(typeInterval);
+             clearTimeout(eraseInterval);
+             type(); // Start the effect
+        }
+
+        function stopTypingEffect() {
+            isTypingActive = false;
+            clearTimeout(typeInterval);
+            clearTimeout(eraseInterval);
+            // Optional: Reset text to original full text when effect stops
+            // aboutHeading.textContent = text;
+        }
+
+
+        // Trigger the typing effect when the about section is visible
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startTypingEffect();
+                    } else {
+                        // Optional: Stop the effect if it scrolls out of view
+                        // stopTypingEffect();
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% visible
+
+            observer.observe(aboutSection);
+        }
+    });
+
+
+    // Scroll animations (Applied ONLY to specific elements)
+    function animateOnScroll() {
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+
+        elementsToAnimate.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2; // Trigger point
+
+            if (elementPosition < screenPosition) {
+                element.classList.add('animate');
+            }
+            // Optional: remove class if it scrolls back up out of view (can cause flashing)
+            // else if (elementPosition > window.innerHeight) { // Only remove if fully off screen bottom
+            //    element.classList.remove('animate');
+            // }
+        });
+    }
+
+    window.addEventListener('scroll', animateOnScroll, { passive: true }); // Use passive listener
+    // Trigger animation check on load as well for elements already in view
+    window.addEventListener('load', animateOnScroll);
+
+    // FIXED: The line that added .animate-on-scroll broadly has been REMOVED.
+    // Ensure the .animate-on-scroll class is present in the HTML for the #experience .exp-item elements.
+
+
+    // Image slider functionality
+    // Wrap in DOMContentLoaded to ensure elements exist
+    document.addEventListener('DOMContentLoaded', function() {
+        const sliders = document.querySelectorAll('.exp-slider');
+
+        sliders.forEach(slider => {
+            const slides = slider.querySelectorAll('.exp-slide');
+            const nextBtn = slider.querySelector('.next-btn');
+            const prevBtn = slider.querySelector('.prev-btn');
+            const dotsContainer = slider.querySelector('.slider-dots');
+
+            if (!slides.length || !nextBtn || !prevBtn || !dotsContainer) {
+                console.warn("Slider component missing required elements", slider);
+                return; // Skip this slider if elements are missing
+            }
+
+            let currentSlide = 0;
+            let interval; // For auto slide
+
+            // Clear existing dots and create new ones
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if (index === 0) dot.classList.add('active');
+
+                dot.addEventListener('click', () => {
+                    setActiveSlide(index);
+                    resetInterval(); // Reset auto slide timer on manual interaction
+                });
+
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+            function setActiveSlide(index) {
+                 // Boundary checks
+                 if (index >= slides.length) index = 0;
+                 if (index < 0) index = slides.length - 1;
+
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Check if slide/dot exists at index before adding class
+                if (slides[index]) slides[index].classList.add('active');
+                if (dots[index]) dots[index].classList.add('active');
+
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                setActiveSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                 setActiveSlide(currentSlide);
+            }
+
+            function startInterval() {
+                 clearInterval(interval); // Clear existing interval first
+                 interval = setInterval(nextSlide, 5000); // Auto slide every 5 seconds
+            }
+
+             function resetInterval() {
+                clearInterval(interval);
+                startInterval();
+            }
+
+
+            nextBtn.addEventListener('click', () => {
+                 nextSlide();
+                 resetInterval();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                 prevSlide();
+                 resetInterval();
+            });
+
+            // Pause auto slide on hover
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(interval);
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                startInterval(); // Resume auto slide
+            });
+
+            // Start the initial interval
+            startInterval();
+
+        }); // End forEach slider
+    }); // End DOMContentLoaded for slider
+
+
+</script>
+</body>
+</html>
