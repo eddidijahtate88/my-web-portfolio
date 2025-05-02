@@ -2316,7 +2316,6 @@ body.dark-mode {
             // Netlify needs the 'form-name' field and URL-encoded data
             const encodedData = encode({
                 "form-name": formName, // Crucial: tells Netlify which form this is
-                "DEBUG_FORM_NAME": formName, // Send it again for debugging
                 ...Object.fromEntries(formData) // Spread form data into the object
             });
 
@@ -2353,12 +2352,16 @@ body.dark-mode {
         });
     }
 
-    // Initial attachment for the form that loads with the page
-    const initialForm = document.querySelector(".contact-form form");
-    if (initialForm) {
-        attachFormSubmitListener(initialForm);
-    }
-
+    // Ensure the DOM is fully loaded before attaching the listener
+    document.addEventListener('DOMContentLoaded', function() {
+        const initialForm = document.querySelector(".contact-form form");
+        if (initialForm) {
+            console.log("DOM loaded, attaching listener to form:", initialForm); // Add log
+            attachFormSubmitListener(initialForm);
+        } else {
+            console.error("DOM loaded, but initial form not found!"); // Add error log
+        }
+    });
 
     // Active Navigation Link Highlighting
     window.addEventListener('scroll', () => {
@@ -2600,7 +2603,6 @@ body.dark-mode {
 
         }); // End forEach slider
     }); // End DOMContentLoaded for slider
-
 
 </script>
 </body>
